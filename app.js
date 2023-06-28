@@ -15,4 +15,10 @@ form.addEventListener("submit" , (e) =>{
     ul.append(li)
     li.append(button)
 })
+// form.reset()
 
+// ul.addEventListener("click", (e) => {
+//     if(e.target.tagName === "button") {
+//         e.target.parentElement.remove();
+//     }
+// });
