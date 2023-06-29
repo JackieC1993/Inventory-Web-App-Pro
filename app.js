@@ -1,24 +1,33 @@
 const form = document.querySelector("form")
 const ul = document.querySelector("ul")
+ul.classList.add("pokeball", "list")
+let removeButton;
 
 form.addEventListener("submit" , (e) =>{
     e.preventDefault()
-    let name = form.querySelector("#name").value
-    let price= form.querySelector("#price").value
-    let itemText= `<h3> name: </h3> <p> ${name} </p> 
-    <h3> price: </h3> <p> ${price} </p>`
-    let buttonText = '<button id ="new">remove</button>'
-    let li = document.createElement("li")
-    let button = document.createElement("button")
-    button.innerHTML= buttonText
-    li.innerHTML = itemText
-    ul.append(li)
-    li.append(button)
+    const inputName = form.querySelector("#name").value;
+    const inputPrice= form.querySelector("#price").value;
+    let item= `<h3>name:</h3><p>${inputName}</p> 
+    <h3>price:</h3><p>  ${inputPrice} </p>`
+    let li = document.createElement("li");
+    li.innerHTML = item;
+    li.classList.add("pokeball");
+    removeButton = document.createElement("button");
+    removeButton.classList.add("remove");
+    removeButton.textContent= "remove";
+    removeButton.addEventListener("click" , (e) =>{
+        e.stopPropagation();
+        
+        li.remove();
+        return;
+    })
+    li.appendChild(removeButton);
+    ul.appendChild(li);
+    //define remove functionality
 })
-// form.reset()
 
-// ul.addEventListener("click", (e) => {
-//     if(e.target.tagName === "button") {
-//         e.target.parentElement.remove();
-//     }
-// });
+
+
+
+
+//form.reset()
